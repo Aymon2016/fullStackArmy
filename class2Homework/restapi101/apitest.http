@@ -1,0 +1,33 @@
+GET http://localhost:8080/health
+
+###
+POST http://localhost:8080/
+Content-Type: application/json
+
+{
+    "name":"mashragi",
+    "age":"20"
+}
+###
+GET http://localhost:8080/
+###
+GET http://localhost:8080/t8xp7Y9Rr
+
+###
+PATCH   http://localhost:8080/2Hknsgrzl
+Content-Type: application/json
+
+{
+    "name":"mashragi bin mortaza",
+    "age":"20"
+}
+###
+PUT   http://localhost:8080/Jz4RaP27a
+Content-Type: application/json
+
+{
+    "name":"mashragm nnn",
+    "age":"20"
+}
+###
+DELETE http://localhost:8080/2Hknsgrzl

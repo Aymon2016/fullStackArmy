@@ -1,0 +1,16 @@
+this course for know how to operate crude operation
+
+1.get find all players
+2.post create a new players and save into db file
+3.get /:id find a single palyer by id
+4.put /:id -upadate palyer by id
+5.PATCH - /:id - update players
+6.DELETE - /:id - delete player from db file
+
+GOOGLE TEKE PORE NITE HOBE
+
+API WIKIPEDIA
+RESTAPI WIKIPEDIA
+RESAPI ARCHITECTURAL CONSTRAIN
+API STATUS CODE 
+API DESIGN CHEAT SHEAT

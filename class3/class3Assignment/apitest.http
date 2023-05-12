@@ -1,1 +1,6 @@
 GET http://localhost:8000/randomNumber?start=10&end=5
+###
+POST http://localhost:8000/randomPerson
+Content-Type: application/json
+
+["firstName","lastName","age"]

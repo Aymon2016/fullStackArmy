@@ -1,6 +1,6 @@
 const express = require("express");
 const RandomNumber = require('../bsLogic/randomNumber')
-
+const RandomPerson = require('../bsLogic/randomPerson')
 const router = new express.Router()
 
 
@@ -47,5 +47,21 @@ router.get("/randomNumber", async (req, res) => {
     }
 });
 
+router.post('/randomPerson', async (req, res) => {
+    const arrayProperties = req.body
+    console.log(arrayProperties)
+    try {
 
+        if (Object.keys(arrayProperties).length === 0) {
+            res.status(400).json({ message: 'Please send some selected properties' })
+        }
+
+        const result = await RandomPerson(arrayProperties);
+        res.status(201)
+        res.json({ result });
+
+    } catch (error) {
+        res.status(500).json({ message: 'this is server Error' })
+    }
+})
 module.exports = router

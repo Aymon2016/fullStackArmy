@@ -1,24 +1,36 @@
 const express = require('express')
-const fs = require('fs');
+const router = require('./router')
+
+
 
 const app = express()
 
 
-app.get('/', (req, res) => {
+app.set('view engine', 'ejs')
 
-    fs.readFile('./page/index.html', (err, data) => {
-        if (err) {
-            console.log(err)
-            res.send(err)
-        } else {
-            res.write(data)
-            res.end()
-        }
-    })
+app.use(router)
 
+//error handlalling
+
+app.use((req, res, next) => {
+
+    const error = new Error('404 not found')
+    error.status = 404;
+    next(error)
 })
 
-const port = 8080;
+//golabal error
+app.use((error, req, res, next) => {
+    console.log('error', error)
+    if (error.status) {
+        return res.status(error.status).send(error.message)
+
+    }
+
+    res.status(500).send('Something Went Wrong')
+})
+
+const port = 8000;
 
 
 app.listen(port, () => {

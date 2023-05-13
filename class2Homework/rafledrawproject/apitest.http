@@ -1,0 +1,52 @@
+GET http://localhost:8000/health
+
+###
+//this router is ok
+GET http://localhost:8000/api/v1/tickets/
+###
+//this router is ok
+GET http://localhost:8000/api/v1/tickets/t/mAzqC9Kh5
+###
+//this router is ok
+GET http://localhost:8000/api/v1/tickets/u/mohammad aymon
+###
+// this router is ok
+POST  http://localhost:8000/api/v1/tickets/
+Content-Type: application/json
+
+{
+    "username":"mohammad aymon",
+    "price":"10"
+}
+###
+//this router is ok
+PUT  http://localhost:8000/api/v1/tickets/t/AAF0NTGnB
+Content-Type: application/json
+
+{
+    "username":"hm nayem",
+    "price":"10"
+}
+###
+//this router is ok
+
+POST   http://localhost:8000/api/v1/tickets/bulk
+Content-Type: application/json
+
+{
+    "username":"hm nayem",
+    "price":"10",
+    "quantity":"5"
+}
+
+###
+//this router is ok
+GET http://localhost:8000/api/v1/tickets/draw?wc=2
+
+###
+
+//this is also work ok router
+DELETE http://localhost:8000/api/v1/tickets/t/dRnY-wSjCi
+###
+// this route is not proper working .delete hoiye filta k clear kortese nh.and ar opor writefile call hosse.
+DELETE http://localhost:8000/api/v1/tickets/u/hm nayem

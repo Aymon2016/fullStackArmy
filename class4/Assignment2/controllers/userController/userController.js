@@ -38,7 +38,7 @@ exports.getAllProducts = (_req, res) => {
 
 
 
-    const getuser = getuser()
+// business service gola entry hobe ai section e
 
 
     /*=====  End of Bussiness logic  ======*/

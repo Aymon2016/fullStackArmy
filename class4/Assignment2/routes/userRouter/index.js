@@ -1,10 +1,10 @@
 const express = require("express");
 const userController = require("../../controllers/userController/userController");
-const userMiddleware = require('../../middlewares/userMiddlewares/userMiddleware')
+const errorHandler = require('../../middlewares/errorHandler/errorhandler')
 const router = express.Router();
 
 // 
-router.get('/', userMiddleware, userController)
+router.get('/', userController, errorHandler)
 
 
 module.exports = router;

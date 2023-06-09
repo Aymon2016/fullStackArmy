@@ -1,0 +1,416 @@
+- [x]  Figure out possible API Endpoints
+- [x]  Write down the specs for each endpoint
+- [x]  Yaml practise kora
+- [ ]  swagger doc pora
+
+End point
+
+**User Auth (page)**
+
+- register - {{baseurl}}/api/v1/auth/register   //post
+- login - {{baseurl}}/api/v1/auth/login   //post
+- logout- {{baseurl}}/api/v1/auth/logout  //get
+
+**user management only admin**
+
+- create- {{baseurl}}/api/v1/users/register   //post
+- update - {{baseurl}}/api/v1/users/{id}  //put
+- delete - {{baseurl}}/api/v1/users/{id}  //delete
+
+**Article Management**
+
+- create - {{baseurl}}/api/v1/articles/create   //post
+- update -{{baseurl}}/api/v1/articles/{articleId}/update/  //put
+- delete - {{baseurl}}/api/v1/articles/{articleId}/delete/  //delete
+- all articles - {{baseurl}}/api/v1/articles?page=1&limit=5&sortField=name&sortOrder=asc  //get
+- one user article - {{baseurl}}/api/v1/articles/{userid}  //get
+- single articke - {{baseurl}}/api/v1/articles/{userid}/{articleid}  //get
+
+**Commenting**
+
+- create - {{baseurl}}/api/v1/articles/{articleid}/comments/create  //post
+- delete - {{baseurl}}/api/v1/articles/{articleid}/comments/{commentId}/delete  //delete
+- update - {{baseurl}}/api/v1/articles/{articleid}/comments/{comentId}/update //put
+- all comment - {{baseurl}}/api/v1/articles/{articleId}/comments?limit=5&sortField=time
+
+**Cover Photo Management**
+
+- update - {{baseurl}}/api/v1/articles/{articleId}/update/photo   (optional) //put
+    - aita  article management e update end point diye korte pari.
+
+YAMl practise
+
+```jsx
+mapping = object
+sequence = array
+
+1 Sequence of Scalars (ball players)
+- MARK
+- SAMMY
+- KEN
+
+[
+    "MARK",
+    "SAMMY",
+    "KEN"
+]
+2 Mapping Scalars to Scalars (player statistics)
+name: 'aymon'
+age: 23
+salary: '45 thousand'
+{
+    "name": "aymon",
+    "age": 23,
+    "salary": "45 thousand"
+}
+3.Mapping Scalars to Sequences
+friends:
+    - toha
+    - sakib
+    - jamshed
+    - don 2
+myenemyfriends:
+    - zahed
+    - forkaan
+    - ismam
+
+{
+    "friends": [
+        "toha",
+        "sakib",
+        "jamshed",
+        "don 2"
+    ],
+    "myenemyfriends": [
+        "zahed",
+        "forkaan",
+        "ismam"
+    ]
+}
+
+note:my enemy friends = " my enemy friends" amon cole ashe.
+
+4 Sequence of Mappings
+-
+    name: aymon
+    age: 24
+    salary: 50 thousand taka
+-   
+    name: sanny
+    age: 34
+    salary: 34 thousand taka
+
+[
+    {
+        "name": "aymon",
+        "age": 24,
+        "salary": "50 thousand taka"
+    },
+    {
+        "name": "sanny",
+        "age": 34,
+        "salary": "34 thousand taka"
+    }
+]
+5 Sequence of Sequences
+-
+    - name
+    - age
+    - salary
+-
+    - sammy
+    - 23
+    - 5000
+
+or
+- [name        , hr, avg  ]
+- [Mark McGwire, 65, 0.278]
+- [Sammy Sosa  , 63, 0.288]
+
+[
+    [
+        "name",
+        "age",
+        "salary"
+    ],
+    [
+        "sammy",
+        23,
+        5000
+    ],
+    [
+        "name",
+        "hr",
+        "avg"
+    ],
+    [
+        "Mark McGwire",
+        65,
+        0.278
+    ],
+    [
+        "Sammy Sosa",
+        63,
+        0.288
+    ]
+]
+6.Mapping of Mappings
+  3 types of mapping
+
+mark:
+    name: aymon
+    age: 23
+    
+Mark McGwire: {hr: 65, avg: 0.278}
+
+Sammy Sosa: {
+    hr: 63,
+    avg: 0.288,
+ }
+
+{
+    "mark": {
+        "name": "aymon",
+        "age": 23
+    },
+    "Mark McGwire": {
+        "hr": 65,
+        "avg": 0.278
+    },
+    "Sammy Sosa": {
+        "hr": 63,
+        "avg": 0.288
+    }
+}
+
+7 Two Documents in a Stream (each with a leading comment)
+this not work why —- dawer karon ki
+	# Ranking of 1998 home runs
+	---
+	- Mark McGwire
+	- Sammy Sosa
+	- Ken Griffey
+	
+	# Team ranking
+	---
+	- Chicago Cubs
+	- St Louis Cardinals
+
+# Ranking of 1998 home runs
+---
+- Mark McGwire
+- Sammy Sosa
+- Ken Griffey
+
+# Team ranking
+
+- Chicago Cubs
+- St Louis Cardinals
+
+[
+    "Mark McGwire",
+    "Sammy Sosa",
+    "Ken Griffey",
+    "Chicago Cubs",
+    "St Louis Cardinals"
+]
+
+8 Play by Play Feed from a Game
+aiter o same obosta .alada alada likte hoi.taile —- ar …. ai goler kaj ki .ki bojaise
+---
+time: 20:03:20
+player: Sammy Sosa
+action: strike (miss)
+...
+{
+    "time": 72200,
+    "player": "Sammy Sosa",
+    "action": "strike (miss)"
+}
+9 Single Document with Two Comments
+
+hr: # 1998 hr ranking
+- Mark McGwire
+- Sammy Sosa
+# 1998 rbi ranking
+rbi:
+- Sammy Sosa
+- Ken Griffey
+
+{
+    "hr": [
+        "Mark McGwire",
+        "Sammy Sosa"
+    ],
+    "rbi": [
+        "Sammy Sosa",
+        "Ken Griffey"
+    ]
+}
+10 Node for “Sammy Sosa” appears twice in this document
+	sondor to varible o declare kora jai
+	---
+hr:
+- Mark McGwire
+- &SS Sammy Sosa
+rbi:
+- *SS
+- Ken Griffey
+{
+    "hr": [
+        "Mark McGwire",
+        "Sammy Sosa"
+    ],
+    "rbi": [
+        "Sammy Sosa",
+        "Ken Griffey"
+    ]
+}
+note:A question mark and space (“? ”) 
+indicate a complex mapping key.
+Within a block collection, key/value
+pairs can start immediately following 
+the dash, colon or question mark.
+
+11 Mapping between Sequences
+
+? - Detroit Tigers
+  - Chicago cubs
+: - 2001-07-23
+
+? [ New York Yankees,
+    Atlanta Braves ]
+: [ 2001-07-02, 2001-08-12,
+    2001-08-14 ]
+
+{
+    "Detroit Tigers,Chicago cubs": [
+        "2001-07-23T00:00:00.000Z"
+    ],
+    "New York Yankees,Atlanta Braves": [
+        "2001-07-02T00:00:00.000Z",
+        "2001-08-12T00:00:00.000Z",
+        "2001-08-14T00:00:00.000Z"
+    ]
+}
+
+12 Compact Nested Mapping
+- item    : Super Hoop
+  quantity: 1
+- item    : Basketball
+  quantity: 4
+- item    : Big Shoes
+  quantity: 1
+
+[
+    {
+        "item": "Super Hoop",
+        "quantity": 1
+    },
+    {
+        "item": "Basketball",
+        "quantity": 4
+    },
+    {
+        "item": "Big Shoes",
+        "quantity": 1
+    }
+]
+
+NOTE:Scalar content can be written 
+in block notation, using a literal 
+style (indicated by “|”) where all 
+line breaks are significant. 
+Alternatively, they can be written 
+with the folded style (denoted by “>”)
+where each line break is folded to a
+space unless it ends an empty or a
+more-indented line.
+
+16 Indentation determines scope
+name: Mark McGwire
+accomplishment: >
+  Mark set a major league
+  home run record in 1998.
+stats: |
+  65 Home Runs
+  0.278 Batting Average
+
+{
+    "name": "Mark McGwire",
+    "accomplishment": "Mark set a major league home run record in 1998.\n",
+    "stats": "65 Home Runs\n0.278 Batting Average\n"
+}
+
+17.INVOICE 
+	invoice: 34843
+date   : 2001-01-23
+bill-to: &id001
+  given  : Chris
+  family : Dumars
+  address:
+    lines: |
+      458 Walkman Dr.
+      Suite #292
+    city    : Royal Oak
+    state   : MI
+    postal  : 48046
+ship-to: *id001
+product:
+- sku         : BL394D
+  quantity    : 4
+  description : Basketball
+  price       : 450.00
+- sku         : BL4438H
+  quantity    : 1
+  description : Super Hoop
+  price       : 2392.00
+tax  : 251.42
+total: 4443.52
+comments:
+  Late afternoon is best.
+  Backup contact is Nancy
+  Billsmer @ 338-4338.
+
+{
+    "invoice": 34843,
+    "date": "2001-01-23T00:00:00.000Z",
+    "bill-to": {
+        "given": "Chris",
+        "family": "Dumars",
+        "address": {
+            "lines": "458 Walkman Dr.\nSuite #292\n",
+            "city": "Royal Oak",
+            "state": "MI",
+            "postal": 48046
+        }
+    },
+    "ship-to": {
+        "given": "Chris",
+        "family": "Dumars",
+        "address": {
+            "lines": "458 Walkman Dr.\nSuite #292\n",
+            "city": "Royal Oak",
+            "state": "MI",
+            "postal": 48046
+        }
+    },
+    "product": [
+        {
+            "sku": "BL394D",
+            "quantity": 4,
+            "description": "Basketball",
+            "price": 450
+        },
+        {
+            "sku": "BL4438H",
+            "quantity": 1,
+            "description": "Super Hoop",
+            "price": 2392
+        }
+    ],
+    "tax": 251.42,
+    "total": 4443.52,
+    "comments": "Late afternoon is best. Backup contact is Nancy Billsmer @ 338-4338."
+}
+```

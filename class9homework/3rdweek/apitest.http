@@ -1,0 +1,107 @@
+//user endpoint
+POST http://localhost:8000/api/v1/users/register
+Content-Type: application/json
+
+{
+    "name": "aymon",
+    "email": "aymon201@gmail.com",
+    "password": "aymon123",
+    "confirmPassword":"aymon123"
+}
+
+###
+
+POST http://localhost:8000/api/v1/users/login
+Authorization: Bearer "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjByclZaXzZFZiIsIm5hbWUiOiJheW1vbiIsImVtYWlsIjoiYXltb24yMDE5OUBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODcwNzM3NzcsImV4cCI6MTY4NzA4MDk3N30.WLJ6vXQnY3xFKGJMGNW-h5A76DpwL4Aylejd-Ezgntk"
+Content-Type: application/json
+
+{
+    "email": "aymon20199@gmail.com",
+    "password": "aymon123"
+}
+
+###
+
+GET  http://localhost:8000/api/v1/users/logout
+
+
+// notice endpoint
+###
+POST http://localhost:8000/api/v1/notices
+Content-Type: application/json
+
+{
+    "title": "this is first notice",
+    "noticeBody": "aymon20199@gmail.com"
+}
+
+###
+
+GET  http://localhost:8000/api/v1/notices/
+###
+
+GET  http://localhost:8000/api/v1/notices/gGXvmAXn2
+
+###
+
+DELETE   http://localhost:8000/api/v1/notices/6APQ6mR5c
+
+
+//product endpoin
+productName, price, userID, createAt
+###
+
+POST http://localhost:8000/api/v1/products/
+Content-Type: application/json
+
+{
+    "productName": "cini",
+    "price": "2000",
+    "userID": "aymon123"
+}
+
+###
+
+GET  http://localhost:8000/api/v1/products/
+
+
+###
+
+DELETE   http://localhost:8000/api/v1/products/4XOBJ8tO8
+
+###
+
+GET  http://localhost:8000/api/v1/products/uI8s7rt94
+
+
+//mill enpoint
+###
+
+POST http://localhost:8000/api/v1/mills/
+Content-Type: application/json
+
+{
+    "date": "2",
+    "member1":"1",
+    "member2":"1",
+    "member3":"1",
+    "member4":"1",
+    "member5":"1",
+    "userID": "aymon123"
+}
+###
+
+GET  http://localhost:8000/api/v1/mills/
+
+###
+
+DELETE   http://localhost:8000/api/v1/mills/TTGhQKNEW
+
+###
+GET  http://localhost:8000/api/v1/mills/aymon123
+
+/authentication
+###
+GET  http://localhost:8000/api/v1/users/logout
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjByclZaXzZFZiIsIm5hbWUiOiJheW1vbiIsImVtYWlsIjoiYXltb24yMDE5OUBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODcwNzM3NzcsImV4cCI6MTY4NzA4MDk3N30.WLJ6vXQnY3xFKGJMGNW-h5A76DpwL4Aylejd-Ezgntk
+Content-Type: application/json
